@@ -1,0 +1,28 @@
+package ru.iFellow.pages;
+
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$x;
+
+public class MyBugPage {
+    private final SelenideElement myBugStatus = $x("//span[@id='status-val']/span");
+
+    private final SelenideElement jobButton = $x("//a[@id='action_id_21']");
+
+    private final SelenideElement businessButton = $x("//a[@id='opsbar-transitions_more']");
+
+    private final SelenideElement businessButtonOption = $x("//aui-item-link[@id='action_id_31']/a");
+
+    public void changeBugStatus() {
+        jobButton.shouldBe(Condition.visible).click();
+        myBugStatus.shouldHave(Condition.text("В работе"));
+        businessButton.click();
+        businessButtonOption.shouldBe(Condition.visible).click();
+        myBugStatus.shouldHave(Condition.text("Готово"));
+    }
+
+    public String getStatusMyBug() {
+        return myBugStatus.getText();
+    }
+}
