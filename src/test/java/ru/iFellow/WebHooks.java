@@ -3,14 +3,14 @@ package ru.iFellow;
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.PageLoadStrategy;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class WebHooks {
-    @BeforeEach
+    @Before
     public void initBrowser() {
         Configuration.pageLoadStrategy = PageLoadStrategy.EAGER.toString();
         Configuration.browser = Browsers.CHROME;
@@ -18,7 +18,7 @@ public class WebHooks {
         getWebDriver().manage().window().maximize();
     }
 
-    @AfterEach
+    @After
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }

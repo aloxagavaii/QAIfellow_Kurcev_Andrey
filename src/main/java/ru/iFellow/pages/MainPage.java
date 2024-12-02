@@ -6,15 +6,11 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainPage {
-    private final SelenideElement progectsList = $x("//a[@id='browse_link']");
-
-    private final SelenideElement progectTest = $x("//a[@id='admin_main_proj_link_lnk']");
-
-    private final SelenideElement quickSearchInput = $x("//input[@id='quickSearchInput']");
-
-    private final SelenideElement createBugButton = $x("//a[@id='create_link']");
-
-    private final SelenideElement createBugDone = $x("//a[@class='issue-created-key issue-link']");
+    private final SelenideElement progectsList = $x("//a[@id='browse_link']").as("выпадающий список Проекты");
+    private final SelenideElement progectTest = $x("//a[@id='admin_main_proj_link_lnk']").as("пункт Тест списка Проекты");
+    private final SelenideElement quickSearchInput = $x("//input[@id='quickSearchInput']").as("поле Поиск");
+    private final SelenideElement createBugButton = $x("//a[@id='create_link']").as("кнопка Создать");
+    private final SelenideElement createBugDone = $x("//a[@class='issue-created-key issue-link']").as("всплывающая подсказка о создании бага");
 
     public void choiseProjectTest() {
         progectsList.shouldBe(Condition.visible).click();
