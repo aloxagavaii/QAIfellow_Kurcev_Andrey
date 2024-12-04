@@ -6,10 +6,8 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ProjectTestPage {
-    private final SelenideElement openTasksCount = $x("//div[@class='showing']/span");
-
-    private final SelenideElement nameProject = $x("//a[@id='project-name-val']");
-
+    private final SelenideElement openTasksCount = $x("//div[@class='showing']/span").as("счетчик количества открытых задач");
+    private final SelenideElement nameProject = $x("//a[@id='project-name-val']").as("ссылка на проект");
     private Integer count;
 
     public void beforeCount() {

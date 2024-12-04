@@ -8,19 +8,12 @@ import ru.iFellow.pages.*;
 
 public class Tests extends WebHooks {
     private final AuthPage authPage = new AuthPage();
-
     private final MainPage mainPage = new MainPage();
-
     private final ProjectTestPage projectTestPage = new ProjectTestPage();
-
     private final TestSeleniumATHomeworkPage testSeleniumATHomeworkPage = new TestSeleniumATHomeworkPage();
-
     private final CreateBugPage createBugPage = new CreateBugPage();
-
     private final MyBugPage myBugPage = new MyBugPage();
-
     private final String name = "AT2";
-
     private final String pas = "Qwerty123";
 
     @Test
@@ -48,10 +41,9 @@ public class Tests extends WebHooks {
         mainPage.choiseProjectTest();
         projectTestPage.beforeCount();
         mainPage.openCreateBug();
-        createBugPage.performCreateBug("тема2","описание","chrome 131","Спринт 2");
+        createBugPage.performCreateBug("тема2","описание","chrome 131");
         mainPage.choiseProjectTest();
         Assertions.assertNotEquals(projectTestPage.getOpenTasksCount1(),projectTestPage.getOpenTasksCount2());
-//        Assertions.assertEquals(projectTestPage.getOpenTasksCount1()+1,projectTestPage.getOpenTasksCount2());
     }
 
     @Test
@@ -72,7 +64,7 @@ public class Tests extends WebHooks {
         mainPage.choiseProjectTest();
         mainPage.choiseTask("TestSeleniumATHomework");
         mainPage.openCreateBug();
-        createBugPage.performCreateBug("тема","описание","chrome 131","Спринт 2");
+        createBugPage.performCreateBug("тема","описание","chrome 131");
         mainPage.openMyBug();
         myBugPage.changeBugStatus();
         Assertions.assertEquals("ГОТОВО",myBugPage.getStatusMyBug());
