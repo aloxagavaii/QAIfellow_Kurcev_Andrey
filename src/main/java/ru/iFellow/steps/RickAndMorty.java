@@ -1,38 +1,34 @@
 package ru.iFellow.steps;
 
-import io.restassured.http.ContentType;
+import ru.iFellow.api.RickAndMortyApi;
 import ru.iFellow.pojoClasses.Character;
-import static io.restassured.RestAssured.given;
 import org.junit.Assert;
 import java.util.List;
 
 public class RickAndMorty {
-  public void rickAndMortySteps(String url, int statusCode) {
-      List<Character> morty = given()
-              .when()
-              .contentType(ContentType.JSON)
-              .get(url+"/character/?name=Morty Smith")
-              .then().log().all()
+    private static final RickAndMortyApi rickAndMortyApi = new RickAndMortyApi();
+
+  public List<Character> getMorty(String url, int statusCode) {
+      return rickAndMortyApi.getRickAndMorty(url)
               .statusCode(statusCode)
               .extract().body().jsonPath().getList("results", Character.class);
+  }
 
-      List<String> episodes = given()
-              .when()
-              .contentType(ContentType.JSON)
-              .get(morty.get(0).getEpisode().get("episode".length()-1))
-              .then().log().all()
+  public List<String> getListEpisodes(String url, int statusCode) {
+      return rickAndMortyApi.getRickAndMorty(url)
               .statusCode(statusCode)
               .extract().body().jsonPath().getList("characters");
+  }
 
-      Character lastCharacter = given()
-              .when()
-              .contentType(ContentType.JSON)
-              .get(episodes.get(episodes.size()-1))
-              .then().log().all()
+
+  public Character getLastCharacter(String url, int statusCode) {
+      return rickAndMortyApi.getRickAndMorty(url)
               .statusCode(statusCode)
               .extract().body().as(Character.class);
+  }
 
-      Assert.assertNotEquals(lastCharacter.getLocation().getName(), morty.get(0).getLocation().getName());
-      Assert.assertEquals(lastCharacter.getSpecies(), morty.get(0).getSpecies());
+  public void asserts(Character last, Character morty) {
+      Assert.assertNotEquals(last.getLocation().getName(), morty.getLocation().getName());
+      Assert.assertEquals(last.getSpecies(), morty.getSpecies());
   }
 }
