@@ -2,6 +2,7 @@ package ru.iFellow.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -14,6 +15,7 @@ public class CreateBugPage {
     private final SelenideElement seriousnessInputOption = $x("//select[@id='customfield_10400']//option[@value='10103']").as("пункт Критический списка Серьезность");
     private final SelenideElement createButton = $x("//input[@id='create-issue-submit']").as("кнопка Создать");
 
+    @Step("Создать баг")
     public void performCreateBug(String theme, String desc, String env) {
         themeInput.shouldBe(Condition.visible).setValue(theme);
         descriptionInput.setValue(desc);

@@ -1,10 +1,10 @@
 package ru.iFellow;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.iFellow.pages.*;
+import ru.iFellow.util.CommonProperties;
+
+import java.io.IOException;
 
 public class Tests extends WebHooks {
     private final AuthPage authPage = new AuthPage();
@@ -13,31 +13,32 @@ public class Tests extends WebHooks {
     private final TestSeleniumATHomeworkPage testSeleniumATHomeworkPage = new TestSeleniumATHomeworkPage();
     private final CreateBugPage createBugPage = new CreateBugPage();
     private final MyBugPage myBugPage = new MyBugPage();
-    private final String name = "AT2";
-    private final String pas = "Qwerty123";
 
     @Test
+    @Tag("gr")
     @Order(1)
     @DisplayName("Вход в систему")
-    public void checkAuth() {
-        authPage.auth(name,pas);
+    public void checkAuth() throws IOException {
+        authPage.auth(CommonProperties.getProperty("name"), CommonProperties.getProperty("pas"));
         Assertions.assertEquals("Проекты",mainPage.getText());
     }
 
     @Test
+    @Tag("gr")
     @Order(2)
     @DisplayName("Переход в проект Тест")
-    public void checkTransitionTest() {
-        authPage.auth(name,pas);
+    public void checkTransitionTest() throws IOException {
+        authPage.auth(CommonProperties.getProperty("name"), CommonProperties.getProperty("pas"));
         mainPage.choiseProjectTest();
         Assertions.assertEquals("Test",projectTestPage.getNameProject());
     }
 
     @Test
+    @Tag("gr")
     @Order(3)
     @DisplayName("Проверка количества заведенных задач")
-    public void checkCountTasks() {
-        authPage.auth(name,pas);
+    public void checkCountTasks() throws IOException {
+        authPage.auth(CommonProperties.getProperty("name"), CommonProperties.getProperty("pas"));
         mainPage.choiseProjectTest();
         projectTestPage.beforeCount();
         mainPage.openCreateBug();
@@ -47,20 +48,22 @@ public class Tests extends WebHooks {
     }
 
     @Test
+    @Tag("gr")
     @Order(4)
     @DisplayName("TestSeleniumATHomework")
-    public void checkTestSeleniumATHomework() {
-        authPage.auth(name,pas);
+    public void checkTestSeleniumATHomework() throws IOException {
+        authPage.auth(CommonProperties.getProperty("name"), CommonProperties.getProperty("pas"));
         mainPage.choiseProjectTest();
         mainPage.choiseTask("TestSeleniumATHomework");
         Assertions.assertEquals("СДЕЛАТЬ Version 2.0",testSeleniumATHomeworkPage.getInfoAboutTask());
     }
 
     @Test
+    @Tag("gr")
     @Order(5)
     @DisplayName("Создание нового бага")
-    public void checkCreateNewBug() {
-        authPage.auth(name,pas);
+    public void checkCreateNewBug() throws IOException {
+        authPage.auth(CommonProperties.getProperty("name"), CommonProperties.getProperty("pas"));
         mainPage.choiseProjectTest();
         mainPage.choiseTask("TestSeleniumATHomework");
         mainPage.openCreateBug();
