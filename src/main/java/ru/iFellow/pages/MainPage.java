@@ -19,7 +19,6 @@ public class MainPage {
         progectTest.shouldBe(Condition.visible).click();
     }
 
-    @Step("Выбрать выпадающий список Проекты")
     public String getText() {
         return progectsList.shouldBe(Condition.visible).getText();
     }
