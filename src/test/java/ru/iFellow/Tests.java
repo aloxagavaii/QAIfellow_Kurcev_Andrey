@@ -20,7 +20,7 @@ public class Tests extends WebHooks {
     @DisplayName("Вход в систему")
     public void checkAuth() throws IOException {
         authPage.auth(CommonProperties.getProperty("name"), CommonProperties.getProperty("pas"));
-        Assertions.assertEquals("Проекты",mainPage.getText());
+        mainPage.checkMainPage();
     }
 
     @Test

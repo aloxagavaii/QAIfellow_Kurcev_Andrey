@@ -21,7 +21,7 @@ public class WebHooks {
         Configuration.browser = Browsers.CHROME;
         Selenide.open(CommonProperties.getProperty("url"));
         getWebDriver().manage().window().maximize();
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true));
     }
 
     @AfterEach

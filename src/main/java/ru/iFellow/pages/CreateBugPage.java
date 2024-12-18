@@ -16,11 +16,11 @@ public class CreateBugPage {
     private final SelenideElement createButton = $x("//input[@id='create-issue-submit']").as("кнопка Создать");
 
     @Step("Создать баг")
-    public void performCreateBug(String theme, String desc, String env) {
+    public void performCreateBug(String theme, String description, String environment) {
         themeInput.shouldBe(Condition.visible).setValue(theme);
-        descriptionInput.setValue(desc);
+        descriptionInput.setValue(description);
         versionOption.click();
-        environmentInput.setValue(env);
+        environmentInput.setValue(environment);
         seriousnessInput.click();
         seriousnessInputOption.click();
         createButton.click();

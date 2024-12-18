@@ -12,9 +12,9 @@ public class AuthPage {
     private final SelenideElement AuthButton = $x("//input[@id='login']").as("кнопка Войти");
 
     @Step("Ввод аккаунта")
-    public void auth(String n, String p) {
-        name.shouldBe(Condition.visible).setValue(n);
-        password.setValue(p);
+    public void auth(String userName, String userPassword) {
+        name.shouldBe(Condition.visible).setValue(userName);
+        password.setValue(userPassword);
         AuthButton.click();
     }
 }

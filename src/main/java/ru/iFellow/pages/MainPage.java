@@ -19,8 +19,9 @@ public class MainPage {
         progectTest.shouldBe(Condition.visible).click();
     }
 
-    public String getText() {
-        return progectsList.shouldBe(Condition.visible).getText();
+    @Step("Проверка входа на главную страницу")
+    public void checkMainPage() {
+        progectsList.shouldBe(Condition.visible);
     }
 
     @Step("Ввести в поле поиска: '{name}'")
