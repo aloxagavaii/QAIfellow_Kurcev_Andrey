@@ -19,16 +19,4 @@ public class Character {
     private ArrayList<String> episode;
     private String url;
     private Date created;
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public ArrayList<String> getEpisode() {
-        return episode;
-    }
 }
