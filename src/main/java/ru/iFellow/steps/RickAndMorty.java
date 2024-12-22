@@ -3,6 +3,7 @@ package ru.iFellow.steps;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
+import org.junit.jupiter.api.Tag;
 import ru.iFellow.api.RequestApi;
 import ru.iFellow.pojoClasses.Character;
 import org.junit.Assert;
