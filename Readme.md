@@ -1,16 +1,16 @@
 
-#Переведение HW5 на cucumber и allure
+# Переведение HW5 на cucumber и allure
 
-##Тесты
+## Тесты
 
 1. RickAndMorty
 2. Reqres
 
-##Запуск тестов из класса CucumberRunnerTest, файлов .feature
+## Запуск тестов из класса CucumberRunnerTest, файлов .feature
 ```bash
 mvn clean test
 ```
-##Запуск отчета из вкладки Maven и консоли
+## Запуск отчета из вкладки Maven и консоли
 ```bash
 mvn allure:report
 mvn allure:serve
